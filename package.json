@@ -1,0 +1,22 @@
+{
+  "name": "json-stub-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "forever": "^0.15.3",
+    "forever-monitor": "^1.7.1",
+    "lodash": "^4.17.2",
+    "opn": "^4.0.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "$(npm bin)/gulp"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-watch": "^4.3.11"
+  }
+}

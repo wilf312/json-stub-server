@@ -1,0 +1,21 @@
+[
+    {
+        "id": "/abcde",
+        "updated": 1482334821,
+        "request": {
+            "body": {},
+            "method": "GET",
+            "params": {
+                "test": "data"
+            }
+        },
+        "version": 5,
+        "response": {
+            "body": {
+                "test": "data"
+            },
+            "httpStatus": 200
+        },
+        "created": 1482333430
+    }
+]

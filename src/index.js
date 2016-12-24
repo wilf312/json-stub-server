@@ -8,7 +8,6 @@ module.exports = () => {
 
   console.log(`dbPath: ${dbPath}`)
   if (!fs.existsSync(dbPath) ) {
-  // if (true) {
     console.log('no exists.')
 
     util.writeJSON(dbPath, [config.defaultData])
@@ -16,7 +15,6 @@ module.exports = () => {
 
   console.log(`backupPath: ${backupPath}`)
   if (!fs.existsSync(backupPath) ) {
-  // if (true) {
     console.log('no exists.')
 
     util.writeJSON(backupPath, [config.defaultData])

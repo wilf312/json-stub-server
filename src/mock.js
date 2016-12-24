@@ -1,13 +1,14 @@
 var express = require('express')
 var fs = require('fs')
 var config = require('./config.js')
+var util = require('./util.js')
 var _ = require('lodash')
 
 
 module.exports = () => {
   var mockServer = express()
   var mockPort = config.port+1
-  var db = JSON.parse(fs.readFileSync(config.db))
+  var db = util.readJSON(config.db)
   var uri = `http://localhost:${mockPort}`
 
 

@@ -18,8 +18,7 @@ app.get(`${config.api.req}/*`, (req, res) => {
   // console.log(res)
   console.log('req.path => ',req.path)
   var apiPath = req.path.replace(config.api.req, '')
-  var db = JSON.parse(fs.readFileSync(config.db))
-  var backup = JSON.parse(fs.readFileSync(config.backup))
+  var db = util.readJSON(config.db)
 
   // JSONの中からリクエストが一致するデータを取得する
   var index = util.getDBIndex(db, {
@@ -48,21 +47,18 @@ app.get(`${config.api.req}/*`, (req, res) => {
 
     // データ登録
     db.push(_.defaults(newData, data))
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
+    util.writeJSON(config.db, db)
 
   }
   else {
     data = db[index]
 
     // バックアップ
-    backup.push(data)
-    fs.writeFile(config.backup, JSON.stringify(backup, null, '    '))
-
-    console.log('index -> ', index)
+    util.backup(data, config.backup)
 
     // データ登録
     db[index] = _.defaults(newData, {version: data.version+1}, data)
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
+    util.writeJSON(config.db, db)
 
   }
 
@@ -76,8 +72,7 @@ app.post(`${config.api.res}/*`, (req, res) => {
   // console.log(req)
   // console.log(res)
   var apiPath = req.path.replace(config.api.res, '')
-  var db = JSON.parse(fs.readFileSync(config.db))
-  var backup = JSON.parse(fs.readFileSync(config.backup))
+  var db = util.readJSON(config.db)
 
   // JSONの中からリクエストが一致するデータを取得する
   var index = util.getDBIndex(db, {
@@ -105,7 +100,7 @@ app.post(`${config.api.res}/*`, (req, res) => {
 
     // データ登録
     db.push(_.defaults(newData, data))
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
+    util.writeJSON(config.db, db)
 
   }
   else {
@@ -113,14 +108,13 @@ app.post(`${config.api.res}/*`, (req, res) => {
     console.log(data)
 
     // バックアップ
-    backup.push(data)
-    fs.writeFile(config.backup, JSON.stringify(backup, null, '    '))
+    util.backup(data, config.backup)
 
     console.log('index -> ', index)
 
     // データ登録
     db[index] = _.defaults(newData, {version: data.version+1}, data)
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
+    util.writeJSON(config.db, db)
 
   }
   res.send(db)

@@ -1,7 +1,7 @@
 {
   "name": "json-stub-server",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "main": "./src/server.js",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",

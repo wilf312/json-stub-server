@@ -36,6 +36,3 @@ module.exports = () => {
 
 }
 
-
-// open browser uri
-// opn(uri)

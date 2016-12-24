@@ -138,26 +138,5 @@ console.log(uri)
 
 
 
-// ----------------- 実際のモックサーバ
-var mockServer = express()
-var mockPort = config.port+1
-var db = JSON.parse(fs.readFileSync(config.db))
-
-_.forEach(db, function(value, key) {
-  const method = value.request.method.toLowerCase()
-  const apiPath = value.id
-  mockServer[method](apiPath, (req, res) => {
-    // set response headers
-    res.header('Content-Type', 'application/json; charset=utf-8')
-    res.charset = 'utf-8'
-
-    res.json(value.response.body)
-  })
-})
-
-mockServer.listen(mockPort)
-
-var uri = `http://localhost:${mockPort}/abcde`
-
-// open browser uri
-// opn(uri)
+var mock = require('./mock')
+mock()

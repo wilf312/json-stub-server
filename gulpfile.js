@@ -14,9 +14,8 @@ gulp.task('watch', ()=> {
 })
 
 gulp.task('server', function () {
-  foreverProcess = new forever.Monitor('./src/server.js').start()
+  foreverProcess = new forever.Monitor('./src/index.js').start()
 })
-
 
 gulp.task('restart', ()=> {
   foreverProcess.restart()

@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "main": "./src/server.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wilf312/json-stub-server.git"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -11,12 +15,34 @@
     "lodash": "^4.17.2",
     "opn": "^4.0.2"
   },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-watch": "^4.3.11"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "$(npm bin)/gulp"
   },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-watch": "^4.3.11"
-  }
+  "keywords": [
+    "JSON",
+    "node",
+    "server",
+    "fake",
+    "API",
+    "prototyping",
+    "mock",
+    "mocking",
+    "test",
+    "testing",
+    "rest",
+    "dummy"
+  ],
+  "author": "GENYA (@wilf312) <g.okada.wilf+github@gmail.com>",
+  "contributors":[
+    "GENYA (@wilf312)<g.okada.wilf+github@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/wilf312/json-stub-server/issues"
+  },
+  "homepage": "https://github.com/wilf312/json-stub-server"
 }

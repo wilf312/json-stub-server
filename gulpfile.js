@@ -7,19 +7,19 @@ gulp.task('watch', ()=> {
   var targets = [
     'src/*.json',
     'src/*.js',
-  ];
+  ]
   gulpWatch(targets, ()=> {
     gulp.start('restart')
   })
 })
 
 gulp.task('server', function () {
-    foreverProcess = new forever.Monitor('./src/server.js').start();
-});
+  foreverProcess = new forever.Monitor('./src/server.js').start()
+})
 
 
 gulp.task('restart', ()=> {
-    foreverProcess.restart()
+  foreverProcess.restart()
 })
 
 

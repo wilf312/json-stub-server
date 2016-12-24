@@ -1,7 +1,7 @@
 {
   "name": "json-stub-server",
   "version": "0.0.1",
-  "main": "./src/server.js",
+  "main": "./src/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "gulp-watch": "^4.3.11"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "dev": "$(npm bin)/gulp"
   },
   "keywords": [

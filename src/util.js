@@ -20,7 +20,8 @@ module.exports = {
     return JSON.parse(fs.readFileSync(filePath))
   },
   writeJSON(filePath, data) {
-    return fs.writeFile(filePath, JSON.stringify(data, null, '    '))
+    var JSONString = JSON.stringify(data, null, '    ')
+    return fs.writeFileSync(filePath, JSONString, 'utf8')
   },
   backup(data, backupPath) {
 

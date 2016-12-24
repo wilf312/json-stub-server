@@ -6,11 +6,11 @@ var util = require('./util.js')
 var fs = require('fs')
 var _ = require('lodash')
 
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')
 
-app.use(express.static('public'));
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(express.static('public'))
+app.use(bodyParser.json())  // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }))  // for parsing application/x-www-form-urlencoded
 
 
 app.get(`${config.api.req}/*`, (req, res) => {
@@ -48,7 +48,7 @@ app.get(`${config.api.req}/*`, (req, res) => {
 
     // データ登録
     db.push(_.defaults(newData, data))
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '));
+    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
 
   }
   else {
@@ -56,13 +56,13 @@ app.get(`${config.api.req}/*`, (req, res) => {
 
     // バックアップ
     backup.push(data)
-    fs.writeFile(config.backup, JSON.stringify(backup, null, '    '));
+    fs.writeFile(config.backup, JSON.stringify(backup, null, '    '))
 
-    console.log('index -> ', index);
+    console.log('index -> ', index)
 
     // データ登録
     db[index] = _.defaults(newData, {version: data.version+1}, data)
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '));
+    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
 
   }
 
@@ -105,7 +105,7 @@ app.post(`${config.api.res}/*`, (req, res) => {
 
     // データ登録
     db.push(_.defaults(newData, data))
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '));
+    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
 
   }
   else {
@@ -114,13 +114,13 @@ app.post(`${config.api.res}/*`, (req, res) => {
 
     // バックアップ
     backup.push(data)
-    fs.writeFile(config.backup, JSON.stringify(backup, null, '    '));
+    fs.writeFile(config.backup, JSON.stringify(backup, null, '    '))
 
-    console.log('index -> ', index);
+    console.log('index -> ', index)
 
     // データ登録
     db[index] = _.defaults(newData, {version: data.version+1}, data)
-    fs.writeFile(config.db, JSON.stringify(db, null, '    '));
+    fs.writeFile(config.db, JSON.stringify(db, null, '    '))
 
   }
   res.send(db)
@@ -133,27 +133,31 @@ var uri = `http://localhost:${config.port}/apimock/request/abcde`
 
 // open browser uri
 // opn(uri)
+console.log(uri)
 
 
+
+
+// ----------------- 実際のモックサーバ
 var mockServer = express()
-
-
-
+var mockPort = config.port+1
 var db = JSON.parse(fs.readFileSync(config.db))
 
-console.log(db)
-
-
 _.forEach(db, function(value, key) {
-  console.log(key);
-  mockServer[value.request.method.toLowerCase()](value.id, (req, res) => {
-    res.send(JSON.stringify(value.response.body))
+  const method = value.request.method.toLowerCase()
+  const apiPath = value.id
+  mockServer[method](apiPath, (req, res) => {
+    // set response headers
+    res.header('Content-Type', 'application/json; charset=utf-8')
+    res.charset = 'utf-8'
+
+    res.json(value.response.body)
   })
-});
+})
 
-mockServer.listen(config.port+1)
+mockServer.listen(mockPort)
 
-var uri = `http://localhost:${config.port+1}/abcde`
+var uri = `http://localhost:${mockPort}/abcde`
 
 // open browser uri
 // opn(uri)

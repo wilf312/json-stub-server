@@ -5,8 +5,8 @@ var foreverProcess = null
 
 gulp.task('watch', ()=> {
   var targets = [
-    'server/*.json',
-    'server/*.js',
+    'src/*.json',
+    'src/*.js',
   ];
   gulpWatch(targets, ()=> {
     gulp.start('restart')
@@ -14,7 +14,7 @@ gulp.task('watch', ()=> {
 })
 
 gulp.task('server', function () {
-    foreverProcess = new forever.Monitor('./server/server.js').start();
+    foreverProcess = new forever.Monitor('./src/server.js').start();
 });
 
 

@@ -27,6 +27,7 @@ jsonStubServer()
 - [ ] update readme.
 - [ ] save req/res headers.
 - [ ] check get/post request param.
+- [ ] set config option port, json directory.
 - [ ] set req status code.
 - [ ] set directory API.
 - [x] add db.json watch & mock server restart.

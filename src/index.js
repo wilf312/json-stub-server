@@ -3,6 +3,8 @@ var util = require('./util')
 var config = require('./config.js')
 var dbPath = process.cwd() + '/'+ config.db
 var backupPath = process.cwd() + '/'+ config.backup
+var watch = require('./watch.js')
+
 
 module.exports = () => {
 
@@ -25,6 +27,12 @@ module.exports = () => {
   apiEntry()
 
   var mock = require('./mock')
-  mock()
+  mock.run()
+
+
+  watch(dbPath, () => {
+    console.log('watch callback')
+    mock.restart()
+  })
 
 }

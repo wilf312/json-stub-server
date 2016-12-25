@@ -1,30 +1,34 @@
+var forever = require('forever-monitor')
 var fs = require('fs')
-var util = require('./util')
+
 var config = require('./config.js')
 var dbPath = process.cwd() + '/'+ config.db
-var backupPath = process.cwd() + '/'+ config.backup
 
-module.exports = () => {
+var foreverProcess = null
 
-  console.log(`dbPath: ${dbPath}`)
-  if (!fs.existsSync(dbPath) ) {
-    console.log('no exists.')
+console.log(`${__dirname}/run.js`)
 
-    util.writeJSON(dbPath, [config.defaultData])
-  }
+function run() {
+  foreverProcess = new forever.Monitor(`${__dirname}/run.js`).start()
 
-  console.log(`backupPath: ${backupPath}`)
-  if (!fs.existsSync(backupPath) ) {
-    console.log('no exists.')
-
-    util.writeJSON(backupPath, [config.defaultData])
-  }
-
-
-  var apiEntry = require('./apiEntry')
-  apiEntry()
-
-  var mock = require('./mock')
-  mock()
+  watch(dbPath)
 
 }
+
+function watch(target, _callback) {
+
+  console.log(`watch => ${target}`)
+
+  fs.watch(target, (eventType, filename) => {
+
+
+    console.log(filename)
+    console.log(`event type is: ${eventType}`)
+
+    if (eventType === 'change') {
+      foreverProcess.restart()
+    }
+  })
+}
+
+module.exports = run

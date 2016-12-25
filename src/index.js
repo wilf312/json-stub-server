@@ -9,8 +9,15 @@ var backupPath = process.cwd() + '/'+ config.backup
 function run() {
   var foreverProcess = new forever.Monitor(`${__dirname}/run.js`).start()
 
-  util.fileCheck(dbPath)
-  util.fileCheck(backupPath)
+  if (!util.fileCheck(dbPath)) {
+    util.writeJSON(dbPath, [config.defaultData])
+  }
+
+  if (!util.fileCheck(backupPath)) {
+    util.writeJSON(backupPath, [config.defaultData])
+  }
+
+
 
   watch(dbPath, ()=> {
       foreverProcess.restart()

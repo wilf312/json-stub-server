@@ -1,5 +1,6 @@
 {
   "name": "json-stub-server",
+  "description": "no RESTful API JSON mock server.",
   "version": "0.0.3",
   "main": "./src/index.js",
   "license": "MIT",

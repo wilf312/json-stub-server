@@ -21,3 +21,12 @@ var jsonStubServer = require('json-stub-server')
 jsonStubServer()
 
 ```
+
+
+## Todo
+- [ ] update readme.
+- [ ] add db.json watch & mock server restart.
+- [ ] save req/res headers.
+- [ ] check get/post request param.
+- [ ] set req status code.
+- [ ] set directory API.

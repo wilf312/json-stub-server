@@ -31,4 +31,11 @@ module.exports = {
 
     this.writeJSON(backupPath, backup)
   },
+  fileCheck(filePath) {
+    if (!fs.existsSync(filePath) ) {
+      console.log(`no exists. ${filePath}`)
+
+      util.writeJSON(filePath, [config.defaultData])
+    }
+  },
 }

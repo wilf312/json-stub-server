@@ -1,5 +1,7 @@
 # json-stub-server
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/wilf312/json-stub-server.svg)](https://greenkeeper.io/)
+
 ## Install
 
 ```bash

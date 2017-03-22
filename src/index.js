@@ -1,4 +1,5 @@
 var forever = require('forever-monitor')
+
 var fs = require('fs')
 var util = require('./util')
 
@@ -17,7 +18,7 @@ function run() {
     util.writeJSON(backupPath, [config.defaultData])
   }
 
-
+  util.readJSON(dbPath)
 
   watch(dbPath, ()=> {
       foreverProcess.restart()

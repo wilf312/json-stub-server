@@ -1,5 +1,6 @@
 var _ = require('lodash')
 var fs = require('fs')
+var jsonlint = require('jsonlint')
 
 module.exports = {
   getLatestData(db, filter) {
@@ -17,7 +18,10 @@ module.exports = {
     return Math.floor( (new Date).getTime() / 1000 )
   },
   readJSON(filePath) {
-    return JSON.parse(fs.readFileSync(filePath))
+    const jsonText = fs.readFileSync(filePath, 'utf8')
+    // console.log(jsonText)
+    jsonlint.parse(jsonText)
+    return JSON.parse(jsonText)
   },
   writeJSON(filePath, data) {
     var JSONString = JSON.stringify(data, null, '    ')

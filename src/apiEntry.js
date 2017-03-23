@@ -13,7 +13,8 @@ app.use(bodyParser.json())  // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))  // for parsing application/x-www-form-urlencoded
 
 
-module.exports = () => {
+module.exports = (port) => {
+
 
   function createJSON(newData, index, db, config) {
 
@@ -100,9 +101,9 @@ module.exports = () => {
 
   })
 
-  app.listen(config.port)
+  app.listen(port+1)
 
-  var uri = `http://localhost:${config.port}/apimock/request/abcde`
+  var uri = `http://localhost:${port+1}/apimock/request/abcde`
 
   // open browser uri
   // opn(uri)

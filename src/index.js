@@ -7,8 +7,20 @@ var config = require('./config.js')
 var dbPath = process.cwd() + '/'+ config.db
 var backupPath = process.cwd() + '/'+ config.backup
 
-function run() {
-  var foreverProcess = new forever.Monitor(`${__dirname}/run.js`).start()
+function run(...sources) {
+
+  var configParam
+
+  if (sources.length === 1) {
+    configParam = Object.assign({}, config,  sources[0])
+  }
+  else {
+    configParam = config
+  }
+
+  var foreverProcess = new (forever.Monitor)(`${__dirname}/run.js`, {
+    args: [configParam.port]
+  }).start()
 
   if (!util.fileCheck(dbPath)) {
     util.writeJSON(dbPath, [config.defaultData])

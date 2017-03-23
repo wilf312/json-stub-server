@@ -5,9 +5,9 @@ var util = require('./util.js')
 var _ = require('lodash')
 
 
-module.exports = () => {
+module.exports = (port) => {
   var mockServer = express()
-  var mockPort = config.port+1
+  var mockPort = port
   var db = util.readJSON(config.db)
   var uri = `http://localhost:${mockPort}`
 

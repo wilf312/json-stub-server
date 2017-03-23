@@ -1,13 +1,11 @@
 // process start
 
-var fs = require('fs')
-var util = require('./util')
-var config = require('./config.js')
-var dbPath = process.cwd() + '/'+ config.db
-var backupPath = process.cwd() + '/'+ config.backup
+// process.argv.forEach(function (val, index, array) {
+//   console.log(index + ': ' + val);
+// });
 
-var apiEntry = require('./apiEntry')
-apiEntry()
 
-var mock = require('./mock')
-mock()
+const port = parseInt(process.argv[2], 10)
+
+require('./apiEntry')(port)
+require('./mock')(port)

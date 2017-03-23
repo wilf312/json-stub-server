@@ -1,3 +1,3 @@
 var jsonStubServer = require('../src')
 
-jsonStubServer()
+jsonStubServer({port: 11111})

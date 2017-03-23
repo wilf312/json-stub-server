@@ -16,7 +16,8 @@ module.exports = () => {
 
   // set response
   _.forEach(db, function(value, key) {
-    const method = value.request.method.toLowerCase()
+    const m = value.request.method.toLowerCase()
+    const method = m != null && m != '' ? m : 'all'
     const apiPath = value.id
 
     console.log(`request path: ${uri+apiPath}`)

@@ -1,5 +1,4 @@
 # json-stub-server
-test
 
 ## Install
 

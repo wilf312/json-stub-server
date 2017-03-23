@@ -29,6 +29,7 @@ function watch(target, _callback) {
 
   fs.watch(target, (eventType, filename) => {
     if (eventType === 'change') {
+      util.readJSON(dbPath)
       _callback()
     }
   })

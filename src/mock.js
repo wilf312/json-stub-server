@@ -25,6 +25,7 @@ module.exports = (port) => {
     mockServer[method](apiPath, (req, res) => {
       // set response headers
       res.header('Content-Type', 'application/json; charset=utf-8')
+      res.header('Access-Control-Allow-Origin', '*')
       res.charset = 'utf-8'
 
       res.json(value.response.body)

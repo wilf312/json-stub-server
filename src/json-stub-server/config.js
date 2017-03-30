@@ -6,19 +6,20 @@ module.exports = {
     },
     db: './db.json',
     backup: './_bk.json',
+    isRunSaveServer: false,
     defaultData: {
-        id: "",
+        id: '',
         version: 1,
         created: 0,
         updated: 0,
         request: {
-            body: "",
+            body: '',
             headers: {
             },
-            method: "GET",
+            method: 'GET',
             params: [
                 {
-                    key: "value"
+                    key: 'value'
                 }
             ]
         },

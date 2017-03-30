@@ -17,6 +17,7 @@ if (process.platform === 'win32') {
   });
 
   rl.on('SIGINT', function () {
+    console.log('catched SIGINT')
     process.emit('SIGINT');
   });
 }

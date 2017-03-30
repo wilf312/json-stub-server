@@ -1,9 +1,9 @@
 var forever = require('forever-monitor')
 
 var fs = require('fs')
-var util = require('./util')
+var util = require('./json-stub-server/util')
 
-var config = require('./config.js')
+var config = require('./json-stub-server/config.js')
 var dbPath = process.cwd() + '/'+ config.db
 var backupPath = process.cwd() + '/'+ config.backup
 
@@ -18,7 +18,7 @@ function run(...sources) {
     configParam = config
   }
 
-  var foreverProcess = new (forever.Monitor)(`${__dirname}/run.js`, {
+  var foreverProcess = new (forever.Monitor)(`${__dirname}/json-stub-server/run.js`, {
     args: [configParam.port, configParam.isRunSaveServer]
   }).start()
 

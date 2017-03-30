@@ -5,10 +5,14 @@ var util = require('./util.js')
 var _ = require('lodash')
 
 
+const cwd = process.cwd()
+const dbPath = `${cwd}/../${config.db}`
+
+
 module.exports = (port) => {
   var mockServer = express()
   var mockPort = port
-  var db = util.readJSON(config.db)
+  var db = util.readJSON(dbPath)
   var uri = `http://localhost:${mockPort}`
 
 

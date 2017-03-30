@@ -101,16 +101,15 @@ module.exports = (port) => {
 
   })
 
-  app.listen(port+1)
+  var _port = port+1
 
-  var uri = `http://localhost:${port+1}/apimock/request/abcde`
+  app.listen(_port)
+
+  var uri = `http://localhost:${_port}/apimock/request/abcde`
 
   // open browser uri
   // opn(uri)
   console.log(uri)
-
-
-
 
 
 }

@@ -19,7 +19,7 @@ function run(...sources) {
   }
 
   var foreverProcess = new (forever.Monitor)(`${__dirname}/run.js`, {
-    args: [configParam.port]
+    args: [configParam.port, configParam.isRunSaveServer]
   }).start()
 
   if (!util.fileCheck(dbPath)) {

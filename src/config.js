@@ -6,6 +6,7 @@ module.exports = {
     },
     db: './db.json',
     backup: './_bk.json',
+    isRunSaveServer: false,
     defaultData: {
         id: "",
         version: 1,

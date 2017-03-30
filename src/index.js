@@ -67,6 +67,7 @@ function run(...sources) {
 
   // On 'SIGINT' 
   process.on('SIGINT', () => {
+    console.log('SIGINT')
 
     runNode.on('close', function (code) {
       console.log('child process exited with code ' + code);

@@ -26,6 +26,7 @@ module.exports = (port) => {
       // set response headers
       res.header('Content-Type', 'application/json; charset=utf-8')
       res.header('Access-Control-Allow-Origin', '*')
+      res.header('Access-Control-Allow-Headers', 'Authorization')
       res.charset = 'utf-8'
 
       res.json(value.response.body)

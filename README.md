@@ -32,4 +32,5 @@ jsonStubServer()
 - [ ] set config option port, json directory.
 - [ ] set req status code.
 - [ ] set directory API.
+- [ ] set directory API.
 - [x] add db.json watch & mock server restart.

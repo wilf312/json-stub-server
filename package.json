@@ -15,7 +15,7 @@
     "forever-monitor": "^1.7.1",
     "jsonlint": "^1.6.2",
     "lodash": "^4.17.2",
-    "opn": "^4.0.2"
+    "opn": "^5.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
